@@ -1,0 +1,119 @@
+--SEQUENCE
+CREATE SEQUENCE BANK_SEQ 
+                START WITH 7
+				INCREMENT BY 1
+				MAXVALUE 9
+				MINVALUE 0
+				CYCLE ;
+INSERT INTO Bank_Master VALUES(NEXT VALUE FOR BANK_SEQ,'D P BANK','DPB' )
+SELECT * FROM Bank_Master
+
+DROP SEQUENCE BANK_SEQ
+
+--SEQUENCE
+CREATE SEQUENCE Branch_SEQ 
+                START WITH 11
+				INCREMENT BY 1
+				MAXVALUE 11
+				MINVALUE 1
+				CYCLE ;
+INSERT INTO Branch_Master VALUES(NEXT VALUE FOR Branch_SEQ,'Rajkot','DPB1234',6 )
+SELECT * FROM Branch_Master
+
+--SEQUENCE
+CREATE SEQUENCE EMP_SEQ 
+                START WITH 106
+				INCREMENT BY 1
+				MAXVALUE 106
+				MINVALUE 1
+				CYCLE ;
+INSERT INTO Employee_Master VALUES(NEXT VALUE FOR EMP_SEQ,'Bharvada Shruti','DSA',211,'DPB1234')
+SELECT * FROM Employee_Master
+
+
+--SYNONYM
+CREATE SYNONYM T_Master FOR Transaction_Master
+SELECT * FROM T_Master
+
+--USING simple if find number is +ve or -ve
+DECLARE @NO INT
+SET @NO=-4
+IF (@NO > 0)
+	PRINT 'NO IS POSITIVE';
+IF (@NO < 0)
+	PRINT 'NO IS NEGATIVE';
+IF (@NO = 0)
+	PRINT 'NO IS ZERO';
+
+--find maximum of two numbers
+DECLARE @NO1 INT, @NO2 INT
+SET @NO1=-4  
+SET @NO2=3
+IF (@NO1 > @NO2)
+	PRINT CONCAT(@NO1, ' IS MAXIMUM');
+ELSE IF(@NO1 < @NO2)
+	PRINT CONCAT(@NO2, ' IS MAXIMUM');
+
+--find maximum of three numbers
+DECLARE @no4 INT, @no5 INT, @no3 INT
+SET @no3=11  
+SET @no4=31
+SET @no5=100
+IF (@NO3 > @NO4)AND (@NO3 > @NO5)
+	PRINT CONCAT(@NO3, ' IS MAXIMUM');
+ELSE IF(@NO3 < @NO4) AND (@NO5 < @NO4) 
+	PRINT CONCAT(@NO4, ' IS MAXIMUM');
+ELSE --IF (@NO3 < @NO5) AND (@NO4 < @NO5)
+	PRINT CONCAT(@NO5,' IS MAXIMUM');
+
+--no is even or odd
+DECLARE @no6 INT
+SET @no6=-4  
+IF (@no6 % 2 = 0)
+	PRINT CONCAT(@no6, ' is even number');
+ELSE
+	PRINT CONCAT(@no6, ' is odd number');
+
+--first 25 number using loop
+DECLARE @CNT INT = 1
+BEGIN 
+WHILE(@CNT <= 25 )
+BEGIN
+	PRINT CONCAT(@CNT,'');
+	SET @CNT=@CNT+1;
+END
+END
+
+--first 25 number in reverse using loop
+DECLARE @CNT1 INT = 25
+BEGIN 
+WHILE(@CNT1 >=1 )
+BEGIN
+	PRINT CONCAT(@CNT1,'');
+	SET @CNT1=@CNT1-1;
+END
+END
+
+--odd numbers from 1 to 100
+DECLARE @CNT2 INT = 1
+BEGIN 
+WHILE(@CNT2 <=100 )
+BEGIN
+	IF (@CNT2 % 2 !=0)
+	PRINT CONCAT(@CNT2,'');
+	SET @CNT2=@CNT2+1;
+END
+END
+
+--sum of first 100 numbers
+DECLARE @CNT3 INT = 1, @SUM INT = 0 
+BEGIN 
+WHILE(@CNT3 <=100)
+BEGIN
+	--PRINT CONCAT(@CNT3,'');
+	SET @CNT3=@CNT3+1;
+	SET @SUM = @SUM + @CNT3
+END
+	PRINT CONCAT(@SUM,' IS SUM OF FIRST 100 NUMBERS');
+END
+
